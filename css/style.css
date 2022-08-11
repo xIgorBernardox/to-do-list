@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Ubuntu:wght@400;500;700&display=swap');
+
+body {
+  background-color: #21D4FD;
+  background-image: linear-gradient(19deg, #B721FF 0%, #21D4FD 100%);
+  background-attachment: fixed;
+  color: #fff;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 450px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 55px;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background: rgba( 255, 255, 255, 0.15 );
+  backdrop-filter: blur( 2px );
+  -webkit-backdrop-filter: blur( 2px );
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 35px;
+}
+
+.top input {
+  width: 350px;
+  padding: 15px;
+  border-radius: 12px;
+  outline: none;
+  font-size: 1.2rem;
+  color: black;
+  background: rgba( 255, 255, 255, 0.05 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 2px );
+  -webkit-backdrop-filter: blur( 2px );
+  border: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.top button {
+  width: 50px;
+  border-radius: 50%;
+  background: rgba( 0, 0, 0, 0.3 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 0px );
+  -webkit-backdrop-filter: blur( 0px );
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  color: #85FFBD;
+  outline: none;
+  transition: all .5s ease;
+}
+
+.top button:hover {
+  background: rgba( 133, 255, 189, 0.45 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 0px );
+  -webkit-backdrop-filter: blur( 0px );
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  color: #000;
+  cursor: pointer;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-list li {
+  padding: 20px;
+  border-radius: 12px;
+  color: black;
+  background: rgba( 255, 255, 255, 0.05 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 2px );
+  -webkit-backdrop-filter: blur( 2px );
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.btn-edit {
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  background: rgba( 0, 0, 0, 0.3 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 0px );
+  -webkit-backdrop-filter: blur( 0px );
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  margin-right: 8px;
+  cursor: pointer;
+  outline: none;
+  transition: all .5s ease;
+}
+
+#btn-mod {
+  color: #FFFB7D;
+  transform: translateX(350%);
+}
+#btn-mod:hover {
+  background: rgba( 255, 251, 125, 0.65 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 0px );
+  -webkit-backdrop-filter: blur( 0px );
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  color: black;
+}
+
+#btn-del {
+  color: rgba( 255, 3, 3, 0.55 );
+}
+#btn-del:hover {
+  background: rgba( 255, 3, 3, 0.65 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 0px );
+  -webkit-backdrop-filter: blur( 0px );
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  color: black;
+}
+
+/* JANELA DE EDIÇÃO APÓS O CLICK EM EDITAR */
+.textTask {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 290px;
+  white-space: nowrap;
+}
+
+#edit-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.548);
+  box-shadow: 0 8px 32px 0 rgba(181, 6, 250, 0.37);
+  backdrop-filter: blur( 0px );
+  -webkit-backdrop-filter: blur( 0px );
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  width: 415px;
+  border-radius: 12px;
+  z-index: 200;
+  display: none;
+}
+
+#edit-window.active {
+  display: block;
+}
+
+#edit-window-bg {
+  position: fixed;
+  top: 0;
+  background-color: black;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+  z-index: 100;
+  right: 0;
+  display: none;
+}
+
+#edit-window-bg.active {
+  display: block;
+}
+
+form {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.frm-line {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.frm-line label {
+  font-family: 'Ubuntu';
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 7px;
+}
+
+/* INPUT */
+.frm-line input {
+  padding: 15px;
+  border-radius: 12px;
+  outline: none;
+  font-size: 1.2rem;
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: 0 8px 12px 0 rgba(181, 6, 250, 0.203);
+  backdrop-filter: blur( 0px );
+  -webkit-backdrop-filter: blur( 0px );
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  color: #fff;
+}
+
+/* BOTÃO SALVAR */
+.frm-line button {
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: 0 8px 12px 0 rgba(181, 6, 250, 0.203);
+  backdrop-filter: blur( 0px );
+  -webkit-backdrop-filter: blur( 0px );
+  border: 1px solid rgba(248, 247, 247, 0.974);
+  width: 150px;
+  height: 60px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #21fde3;
+  letter-spacing: 2px;
+  font-family: 'Ubuntu' sans-serif;
+  font-size: 1.6rem;
+  outline: none;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+}
+
+.frm-line button:hover {
+  background: #21fde3;
+  color: #000;
+}
+
+.save-btn {
+  padding-left: 5px;
+}
+
+/* BOTÃO FECHAR */
+#close-btn {
+  position: absolute;
+  top: -25px;
+  right: -18px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgb(33, 33, 33);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur( 0px );
+  -webkit-backdrop-filter: blur( 0px );
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  color: rgb(255, 3, 3);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+#close-btn:hover {
+  color: #000;
+  background-color: rgb(255, 3, 3);
+}
+
+ion-icon {
+  font-size: 20px;
+}
